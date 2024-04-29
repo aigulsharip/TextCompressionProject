@@ -26,12 +26,8 @@ public class FileController {
     @GetMapping("/compress")
     public String compressText() {
         try {
-            // Read text from file
             String text = fileReadingService.readFileFromResources("input.txt");
-
-            // Compress text
             compressionService.compressText(text);
-
             return "Text compressed successfully.";
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +38,6 @@ public class FileController {
     @GetMapping("/decompress")
     public String decompressText() {
         try {
-            // Decompress text
             compressionService.decompressText("output.sc", "readable.txt");
             return "Text decompressed successfully.";
         } catch (IOException e) {
