@@ -1,1 +1,1 @@
-I will test special characters, -, %, @. ?????? This is a sample text file for testing the compression algorithm. This is sample. We are using this text to see how well the algorithm can compress it. 
+This is a sample text file for testing the compression algorithm. This is sample. I will test special characters, -, %, @. ?. We are using this text to see how well the algorithm can compress it. 

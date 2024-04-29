@@ -44,7 +44,6 @@ public class FileController {
         try {
             // Decompress text
             compressionService.decompressText("output.sc", "readable.txt");
-
             return "Text decompressed successfully.";
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,38 +51,4 @@ public class FileController {
         }
     }
 
-
-    /*
-    @GetMapping("/compress")
-    public String compressText(@RequestParam String fileName) {
-        try {
-            // Read text from file
-            String text = fileReadingService.readFileFromResources(fileName);
-
-            // Encode words and compress text
-            WordEncoder encoder = new WordEncoder();
-            encoder.encodeWords(text);
-            encoder.compressText(text, "output.sc");
-
-            return "Text compressed successfully.";
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "Error compressing text.";
-        }
-    }
-
-    @GetMapping("/decompress")
-    public String decompressText() {
-        try {
-            // Decompress text and write to readable file
-            compressionService.decompressText("output.sc", "readable.txt");
-
-            return "Text decompressed and written to readable.txt successfully.";
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "Error decompressing text.";
-        }
-    }
-
-    */
 }

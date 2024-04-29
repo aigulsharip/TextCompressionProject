@@ -1,11 +1,8 @@
 package com.growth.hungry.textcompressionproject.service;
 
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -64,8 +61,8 @@ public class CompressionService {
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                 writer.write(codeMappings.toString());
-                writer.newLine(); // Add newline separator
-                writer.write(compressedText.toString().trim()); // Write compressed codes
+                writer.newLine();
+                writer.write(compressedText.toString().trim());
             }
         }
     }
@@ -92,10 +89,10 @@ public class CompressionService {
                 while ((line = reader.readLine()) != null) {
                     if (!isCodeMappingsRead && line.isEmpty()) {
                         isCodeMappingsRead = true;
-                        continue; // Skip empty line
+                        continue;
                     }
                     if (!isCodeMappingsRead) {
-                        continue; // Skip code mappings
+                        continue;
                     }
                     String[] codes = line.split(" ");
                     for (String code : codes) {
@@ -107,22 +104,6 @@ public class CompressionService {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                 writer.write(decompressedText.toString());
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        try {
-            String text = "This is a sample text. This text will be encoded.";
-
-            CompressionService compressionService = new CompressionService();
-            compressionService.compressText(text);
-            System.out.println("Text compressed successfully.");
-
-            compressionService.decompressText("output.sc", "readable.txt");
-            System.out.println("Text decompressed successfully.");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error: " + e.getMessage());
         }
     }
 }
